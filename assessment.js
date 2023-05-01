@@ -28,18 +28,10 @@ isAvailable: true },
 
 
 // Create a function called getAvailableBooks that returns an array of all available books.
-
-let getAvailableBooks = () =>{
-    let emptyArray = [];
-    let allBooks = books.title
-    
-    for(book of allBooks){
-        emptyArray.push(book)
-    }
-    return emptyArray;
+function gav(books){
+    return books.filter(book => book.isAvailable)
 }
-
-getAvailableBooks();
+console.log(gav(books));
 
 
 // Create a function getBooksByAuthor that takes an author's name as an argument and
