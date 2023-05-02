@@ -37,16 +37,11 @@ console.log(gav(books));
 // Create a function getBooksByAuthor that takes an author's name as an argument and
 // returns an array of all books by that author.
 
-let getBooksByAuthor = (author) =>{
-    let allAuthorsBook = books.title
-    for(i =0; i < allAuthorsBook.length; i++){
-        if( allAuthorsBook[i].match(author)){
-            return allAuthorsBook[i]
-        }
-    }
+let getBooksByAuthor = (books, authorName) =>{
+    return books.filter(book => book.author == authorName)
 }
-
-getBooksByAuthor("J.D. Salinger");
+let authorName = "Homer"
+console.log(getAvailableBooks(books, authorName))
 
 
 // Create a function addNewBook that takes a book object as an argument and adds it
@@ -54,40 +49,32 @@ getBooksByAuthor("J.D. Salinger");
 // publicationYear, and isAvailable).
 
 
-let addNewBook = (title, author, publicationYear, isAvailable) =>{
-
-    let newBookTittle = books.title;
-    let newBookAuthor = books.author;
-    let newPublicationYear = books.publicationYear;
-    let newBookAvailability = books.isAvailable;
-
-    Object.books.push(newBookTittle,newBookAuthor, newPublicationYear,newBookAvailability);
-
-}
-
-addNewBook("before moon light", "John Mayer", 1290, false)
-
+  let addNewBook = (book) =>{
+            if(book.title || book.author || book.publicationYear || book.isAvailable){
+                return books.push(book)
+            }
+        }
+        let newbook = {title:"born a crime", author:"trevor noah", publicationYear:2023, isAvailable:true}
+        console.log(addNewBook(newbook));
+        addNewBook(books)
 
 
 // Create a function checkoutBook that takes a book title as an argument and changes
 // the book's isAvailable property to false. If the book is not found in the library, the
 // function should return a message indicating that the book is not available.
 
-let checkOutBook = (title) => {
 
-    for(availability of books.isAvailable){
-    if(availability === true){
-        let newStatus = books.availability;
-        books.availability = false
-        console.log(newStatus);
+  let checkOutBook = (title) => {
+        let bookkIndex = books.findIndex(book => book.title == title);
+        if(bookkIndex == -1){
+            return "available"
+        }
+        book[bookkIndex].isAvailable = false;
+        return "not availbable"
     }
 
-    else{
-        console.log("the book is not available");
-    }
-}
-}
-checkOutBook("The Odyssey");
+    let title = "born a crime"
+    console.log(checkOutBook(title));
 
 
 // Create a function returnBook that takes a book title as an argument and changes the
